@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prudential Cambodia | Operations &amp; Technology Away Day 2026</title>
+<meta name="description" content="Prudential Cambodia Operations & Technology Away Day 2026 — Siem Reap, 7–9 August 2026. One Team, One Journey, One Future.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Sans+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-text">
+        <strong>Prudential</strong> Cambodia
+      </span>
+    </a>
+
+    <nav class="main-nav" id="main-nav" aria-label="Primary">
+      <a href="#journey">Journey</a>
+      <a href="#itinerary">Itinerary</a>
+      <a href="#photo-hunt">Photo Hunt</a>
+      <a href="#assignments">Bus &amp; Room</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#connect" class="nav-cta">Quick Access</a>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <p class="eyebrow reveal">Operations &amp; Technology Away Day 2026</p>
+      <h1 id="hero-title" class="hero-title reveal">One Team <span class="dot">&bull;</span> One Journey <span class="dot">&bull;</span> One Future</h1>
+
+      <ul class="hero-facts reveal">
+        <li>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 22s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z" stroke="currentColor" stroke-width="1.6" fill="none"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
+          <span>Siem Reap, Cambodia</span>
+        </li>
+        <li>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6"/></svg>
+          <span>7–9 August 2026</span>
+        </li>
+        <li>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6" stroke="currentColor" stroke-width="1.6" fill="none"/><circle cx="17" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M15.5 14.2c2.9.4 5 2.4 5 5.8" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
+          <span>100+ Employees</span>
+        </li>
+        <li>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 21V9l8-6 8 6v12" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M9 21v-6h6v6" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
+          <span>3 Days &bull; 2 Nights</span>
+        </li>
+      </ul>
+
+      <!-- Countdown -->
+      <div class="countdown reveal" id="countdown" aria-label="Countdown to Away Day">
+        <div class="countdown-item"><span class="cd-value" id="cd-days">00</span><span class="cd-label">Days</span></div>
+        <div class="countdown-item"><span class="cd-value" id="cd-hours">00</span><span class="cd-label">Hours</span></div>
+        <div class="countdown-item"><span class="cd-value" id="cd-mins">00</span><span class="cd-label">Minutes</span></div>
+        <div class="countdown-item"><span class="cd-value" id="cd-secs">00</span><span class="cd-label">Seconds</span></div>
+      </div>
+      <p class="countdown-caption reveal" id="countdownCaption">Counting down to departure — 5:30 AM, Chip Mong Tower</p>
+
+      <div class="hero-actions reveal">
+        <a href="#itinerary" class="btn btn-primary">View Full Itinerary</a>
+        <a href="#connect" class="btn btn-ghost">Emergency Contacts</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ANNOUNCEMENT TICKER ===== -->
+  <div class="ticker" role="status" aria-live="polite">
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
+
+  <!-- ===== JOURNEY OVERVIEW (animated roadmap) ===== -->
+  <section class="section" id="journey" aria-labelledby="journey-title">
+    <div class="container">
+      <p class="section-eyebrow reveal">Journey Overview</p>
+      <h2 id="journey-title" class="section-title reveal">Three Days. One Unforgettable Road.</h2>
+      <p class="section-lead reveal">Scroll through the road to Siem Reap — every stop, every memory, mapped along the way.</p>
+
+      <div class="roadmap" id="roadmap">
+        <div class="roadmap-line" aria-hidden="true"><span class="roadmap-line-fill" id="roadmapFill"></span></div>
+
+        <!-- Day 1 -->
+        <div class="road-day">
+          <div class="road-day-badge reveal">Day 1 <em>· Fri 7 Aug</em></div>
+          <ol class="road-stops">
+            <li class="road-stop reveal"><span class="stop-dot"></span><div><h3>Phnom Penh Departure</h3><p>Gather at Chip Mong Tower, 5:30 AM</p></div></li>
+            <li class="road-stop reveal"><span class="stop-dot"></span><div><h3>Travel to Siem Reap</h3><p>Coffee &amp; rest stops en route</p></div></li>
+            <li class="road-stop reveal"><span class="stop-dot"></span><div><h3>Hotel Check-in</h3><p>Arrival &amp; settle in</p></div></li>
+            <li class="road-stop reveal"><span class="stop-dot"></span><div><h3>Choose Your Experience</h3><p>Museum or Sunset Cruise</p></div></li>
+            <li class="road-stop reveal"><span class="stop-dot"></span><div><h3>Welcome Dinner</h3><p>Networking evening at Tavern</p></div></li>
+          </ol>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="road-day">
+          <div class="road-day-badge reveal">Day 2 <em>· Sat 8 Aug</em></div>
+          <ol class="road-stops">
+            <li class="road-stop reveal"><span class="stop-dot"></span><div><h3>Breakfast</h3><p>7:00 AM at hotel</p></div></li>
+            <li class="road-stop reveal"><span class="stop-dot"></span><div><h3>Preah Khan Temple</h3><p>Explore &amp; Photo Hunt Challenge</p></div></li>
+            <li class="road-stop reveal"><span class="stop-dot"></span><div><h3>Neak Pean Temple</h3><p>Guided exploration</p></div></li>
+            <li class="road-stop reveal"><span class="stop-dot"></span><div><h3>Lunch at Pteah Bay Mae Ly</h3><p>Local cuisine, free time</p></div></li>
+            <li class="road-stop reveal"><span class="stop-dot"></span><div><h3>Gala Dinner</h3><p>Celebration &amp; recognition — sky bar or restaurant, weather permitting</p></div></li>
+          </ol>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="road-day">
+          <div class="road-day-badge reveal">Day 3 <em>· Sun 9 Aug</em></div>
+          <ol class="road-stops">
+            <li class="road-stop reveal"><span class="stop-dot"></span><div><h3>Breakfast &amp; Check-out</h3><p>Morning at hotel</p></div></li>
+            <li class="road-stop reveal"><span class="stop-dot"></span><div><h3>Return to Phnom Penh</h3><p>Depart 9:00 AM</p></div></li>
+            <li class="road-stop reveal"><span class="stop-dot"></span><div><h3>Lunch at Somros Prey Pros</h3><p>11:30 AM · Kampong Thom Province</p></div></li>
+            <li class="road-stop reveal"><span class="stop-dot"></span><div><h3>Arrival in Phnom Penh</h3><p>6:00 PM</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INTERACTIVE ITINERARY ===== -->
+  <section class="section section-alt" id="itinerary" aria-labelledby="itinerary-title">
+    <div class="container">
+      <p class="section-eyebrow reveal">Live Itinerary</p>
+      <h2 id="itinerary-title" class="section-title reveal">Today's Schedule, At a Glance</h2>
+      <p class="section-lead reveal">Switch between days to see detailed timing. The current day is highlighted automatically during the event.</p>
+
+      <div class="day-tabs reveal" role="tablist" aria-label="Away Day itinerary days" id="dayTabs">
+        <button class="day-tab is-active" role="tab" aria-selected="true" aria-controls="day-1-panel" id="day-1-tab" data-day="1">Day 1<span>Fri 7 Aug</span></button>
+        <button class="day-tab" role="tab" aria-selected="false" aria-controls="day-2-panel" id="day-2-tab" data-day="2">Day 2<span>Sat 8 Aug</span></button>
+        <button class="day-tab" role="tab" aria-selected="false" aria-controls="day-3-panel" id="day-3-tab" data-day="3">Day 3<span>Sun 9 Aug</span></button>
+      </div>
+
+      <!-- DAY 1 PANEL -->
+      <div class="day-panel is-active" id="day-1-panel" role="tabpanel" aria-labelledby="day-1-tab" data-day-panel="1">
+        <ol class="timeline">
+          <li><time>5:30 AM</time><div><h3>Participant Gathering</h3><p>Chip Mong Tower, Phnom Penh</p></div></li>
+          <li><time>6:00 AM</time><div><h3>Departure from Phnom Penh</h3><p>Coach convoy to Siem Reap</p></div></li>
+          <li><time>Morning</time><div><h3>Breakfast On the Bus</h3><p>Packed breakfast served during the journey</p></div></li>
+          <li><time>Morning</time><div><h3>Coffee &amp; Rest Stops</h3><p>En route breaks</p></div></li>
+          <li><time>Lunch</time><div><h3>Lunch at Prohok Chamka</h3><p>Local Khmer cuisine en route to Siem Reap</p>
+            <div class="meal-map"><iframe title="Prohok Chamka map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnast2iZpgOHavv6Liv7Ypz34DRLV3ONcfGM79oCMCVZKkj6PVsDsXzHvzI7DVt0V5aih52M8oU9U3MycyB8UJ2z8D9mtwqgSxEgO3MEk_1H7EkXQb0xer1VNcub8227EadeRWFSEapJ5s=w408-h544-k-no"></iframe></div>
+            <a class="meal-link" href="https://maps.app.goo.gl/kWBgZKVZqs3eMQ8m7" target="_blank" rel="noopener">View on Google Maps</a>
+          </div></li>
+          <li><time>Afternoon</time><div><h3>Arrival &amp; Hotel Check-in</h3><p>Siem Reap</p></div></li>
+          <li class="timeline-highlight"><time>2:00 PM</time><div><h3>Choose Your Experience</h3><p>Museum or Phnom Krom Sunset — see options below</p></div></li>
+          <li><time>5:30 PM</time><div><h3>Gather at Hotel Lobby</h3><p>Prepare for dinner</p></div></li>
+          <li><time>5:45 PM</time><div><h3>Depart for Welcome Dinner</h3><p></p></div></li>
+          <li><time>6:30 PM</time><div><h3>Welcome Dinner at Tavern</h3><p>Dinner &amp; networking evening</p>
+            <div class="meal-map"><iframe title="Tavern Siem Reap map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=13.3243692,103.8712557&z=16&output=embed"></iframe></div>
+            <a class="meal-link" href="https://maps.app.goo.gl/aYdRuQNNWshGiTEc6" target="_blank" rel="noopener">View on Google Maps</a>
+          </div></li>
+          <li><time>Evening</time><div><h3>Return to Hotel</h3><p>Free time</p></div></li>
+        </ol>
+
+        <!-- Choice cards -->
+        <div class="choice-block">
+          <h3 class="choice-title">2:00 PM — Choose Your Afternoon Experience</h3>
+          <p class="choice-sub">Pick one option below. Your selection is saved on this device so you can reference it later.</p>
+          <div class="choice-cards" id="choiceCards">
+            <button class="choice-card" data-choice="museum">
+              <span class="choice-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/><path d="M4 10v10h16V10" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M9 20v-6h6v6" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
+              </span>
+              <span class="choice-label">Option A</span>
+              <h4>Siem Reap Museum</h4>
+              <p>Explore Cambodia's history and culture with a self-guided visit.</p>
+              <span class="choice-select">Select this option</span>
+            </button>
+            <button class="choice-card" data-choice="sunset">
+              <span class="choice-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="14" r="5" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M2 19h20M2 14h2M20 14h2M12 6V4" stroke="currentColor" stroke-width="1.6"/></svg>
+              </span>
+              <span class="choice-label">Option B</span>
+              <h4>Phnom Krom Sunset Experience</h4>
+              <p>Boat ride on Tonlé Sap Lake, sunset from Phnom Krom, and scenic photography.</p>
+              <span class="choice-select">Select this option</span>
+            </button>
+          </div>
+          <p class="choice-confirm" id="choiceConfirm" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <!-- DAY 2 PANEL -->
+      <div class="day-panel" id="day-2-panel" role="tabpanel" aria-labelledby="day-2-tab" hidden data-day-panel="2">
+        <ol class="timeline">
+          <li><time>7:00 AM</time><div><h3>Breakfast at Hotel</h3><p></p></div></li>
+          <li><time>9:00 AM</time><div><h3>Depart to Preah Khan Temple</h3><p></p></div></li>
+          <li class="timeline-highlight"><time>9:30–10:30</time><div><h3>Photo Hunt Team Challenge</h3><p>See full rules &amp; prizes below</p></div></li>
+          <li><time>10:40 AM</time><div><h3>Depart to Neak Pean Temple</h3><p></p></div></li>
+          <li><time>11:00 AM</time><div><h3>Explore Neak Pean Temple</h3><p></p></div></li>
+          <li><time>11:30 AM</time><div><h3>Lunch at Pteah Bay Mae Ly</h3><p>Local cuisine with the team</p>
+            <div class="meal-map"><iframe title="Pteah Bay Mae Ly map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/place/%E1%9E%95%E1%9F%92%E1%9E%91%E1%9F%87%E1%9E%94%E1%9E%B6%E1%9E%99%E1%9E%98%E1%9F%89%E1%9F%82%E1%9E%9B%E1%9E%B8+%7C+Mae+Ly+Restaurant/@13.3580023,103.8971937,3a,75y,90t/data=!3m8!1e2!3m6!1sCIABIhDT8ekIAasuwH_adwNK026N!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAHRPTWkd3OjCcWiT0_3bC28yQtMxvEm63LoxYFCk6h2b0kZMx9MjpYwmy7mZ9mOSjz-44uKBzqYXbbnAzKDhhm9VOhqZxxizWUddAHPe_5a-YrzNseR12EMnGiAK9-D7IP6YVsKhVECncPhK7zs%3Dw203-h203-k-no!7i2048!8i2048!4m7!3m6!1s0x3110170076ddf9b9:0xb3f8d947228e8d44!8m2!3d13.3580606!4d103.8972991!10e5!16s%2Fg%2F11lnjk5kpq?entry=ttu&g_ep=EgoyMDI2MDcyOC4wIKXMDSoASAFQAw%3D%3D#"></iframe></div>
+            <a class="meal-link" href="https://maps.app.goo.gl/4whnu6sVqWRM8B878" target="_blank" rel="noopener">View on Google Maps</a>
+          </div></li>
+          <li><time>3:00 PM</time><div><h3>Return to Hotel</h3><p></p></div></li>
+          <li><time>Afternoon</time><div><h3>Rest &amp; Prepare for Gala</h3><p></p></div></li>
+          <li><time>6:00 PM</time><div><h3>Gala Guest Gathering</h3><p></p></div></li>
+          <li class="timeline-highlight"><time>7:00–9:00 PM</time><div><h3>Gala Dinner &amp; Celebration</h3><p>At the hotel — sky bar or restaurant, depending on weather · Welcome speech · Team recognition · Lucky draw · Entertainment · Group photo</p></div></li>
+        </ol>
+      </div>
+
+      <!-- DAY 3 PANEL -->
+      <div class="day-panel" id="day-3-panel" role="tabpanel" aria-labelledby="day-3-tab" hidden data-day-panel="3">
+        <ol class="timeline">
+          <li><time>Morning</time><div><h3>Breakfast &amp; Hotel Check-out</h3><p></p></div></li>
+          <li><time>9:00 AM</time><div><h3>Depart Siem Reap</h3><p></p></div></li>
+          <li><time>11:30 AM</time><div><h3>Lunch at Somros Prey Pros Restaurant</h3><p>Kampong Thom Province</p>
+            <div class="meal-map"><iframe title="Somros Prey Pros Restaurant map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=12.7906885,104.8195944&z=16&output=embed"></iframe></div>
+            <a class="meal-link" href="https://maps.app.goo.gl/A5XABKF3twjz9W9S6" target="_blank" rel="noopener">View on Google Maps</a>
+          </div></li>
+          <li><time>6:00 PM</time><div><h3>Arrive in Phnom Penh</h3><p>Away Day 2026 concludes</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EVENT HIGHLIGHTS ===== -->
+  <section class="section" id="highlights" aria-labelledby="highlights-title">
+    <div class="container">
+      <p class="section-eyebrow reveal">Highlights</p>
+      <h2 id="highlights-title" class="section-title reveal">Moments to Look Forward To</h2>
+      <div class="highlights-grid">
+        <article class="highlight-card reveal">
+          <span class="highlight-day">Day 1</span>
+          <ul>
+            <li>Team Journey to Siem Reap</li>
+            <li>Hotel Check-in</li>
+            <li>Museum or Sunset Cruise</li>
+            <li>Welcome Dinner</li>
+          </ul>
+        </article>
+        <article class="highlight-card reveal">
+          <span class="highlight-day">Day 2</span>
+          <ul>
+            <li>Temple Exploration</li>
+            <li>Team Photo Hunt Challenge</li>
+            <li>Team Lunch at Pteah Bay Mae Ly</li>
+            <li>Gala Dinner</li>
+          </ul>
+        </article>
+        <article class="highlight-card reveal">
+          <span class="highlight-day">Day 3</span>
+          <ul>
+            <li>Return Trip</li>
+            <li>Lunch at Somros Prey Pros</li>
+            <li>Arrival in Phnom Penh, 6:00 PM</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PHOTO HUNT ===== -->
+  <section class="section section-alt" id="photo-hunt" aria-labelledby="photohunt-title">
+    <div class="container photo-hunt-grid">
+      <div class="reveal">
+        <p class="section-eyebrow">Day 2 · 9:30–10:30 AM</p>
+        <h2 id="photohunt-title" class="section-title">Photo Hunt Team Challenge</h2>
+        <p class="section-lead">Teams race through Preah Khan Temple to capture creative shots from a shared checklist. Fun, fast, and full of team spirit.</p>
+
+        <h3 class="mini-title">Rules</h3>
+        <ol class="rules-list">
+          <li>Teams of 5–6, assigned at check-in.</li>
+          <li>Each team receives a photo checklist at Preah Khan Temple.</li>
+          <li>60 minutes to capture every shot on the list.</li>
+          <li>Submit photos via the team WhatsApp group before the deadline.</li>
+          <li>Judged on creativity, teamwork, and completeness.</li>
+        </ol>
+      </div>
+      <div class="prize-card reveal">
+        <h3 class="mini-title">Prizes</h3>
+        <ul class="prize-list">
+          <li><span class="prize-rank">🥇</span><div><strong>1st Place</strong><span>Announced at the Gala Dinner Lucky Draw segment</span></div></li>
+          <li><span class="prize-rank">🥈</span><div><strong>2nd Place</strong><span>Announced at the Gala Dinner Lucky Draw segment</span></div></li>
+          <li><span class="prize-rank">🥉</span><div><strong>3rd Place</strong><span>Announced at the Gala Dinner Lucky Draw segment</span></div></li>
+        </ul>
+        <p class="prize-note">Exact prize details will be confirmed and announced during the event.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BUS & ROOM ASSIGNMENTS ===== -->
+  <section class="section" id="assignments" aria-labelledby="assignments-title">
+    <div class="container">
+      <p class="section-eyebrow reveal">Good to Know</p>
+      <h2 id="assignments-title" class="section-title reveal">Bus &amp; Room Assignments</h2>
+      <p class="section-lead reveal">Search your name to find your bus group and hotel room.</p>
+
+      <div class="assignment-search reveal">
+        <input type="search" id="assignmentSearch" placeholder="Search your name…" aria-label="Search your name in the bus and room lists">
+      </div>
+
+      <div class="assignments-grid">
+        <div class="assignment-panel reveal">
+          <h3 class="mini-title">Bus List</h3>
+          <div class="table-scroll">
+            <table class="data-table" id="busTable">
+              <thead><tr><th>No</th><th>Bus 1</th><th>Bus 2</th><th>Bus 3</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="assignment-panel reveal">
+          <h3 class="mini-title">Room List</h3>
+          <div class="table-scroll">
+            <table class="data-table" id="roomTable">
+              <thead><tr><th>No</th><th>Name</th><th>Room</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="section" id="gallery" aria-labelledby="gallery-title">
+    <div class="container">
+      <p class="section-eyebrow reveal">Capture the Moment</p>
+      <h2 id="gallery-title" class="section-title reveal">Event Photo Gallery</h2>
+      <p class="section-lead reveal">Photos will be added throughout the event. Check back daily for new highlights.</p>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== EMERGENCY CONTACTS ===== -->
+  <section class="section section-alt" id="connect" aria-labelledby="connect-title">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-eyebrow">Quick Access</p>
+        <h2 id="connect-title" class="section-title">Emergency Contacts</h2>
+        <p class="section-lead">Save these numbers before departure in case you need help during the trip.</p>
+
+        <ul class="contact-list">
+          <li><strong>Event Hotline</strong><span>+855 XX XXX XXX <em>(placeholder — update)</em></span></li>
+          <li><strong>Medical / First Aid</strong><span>+855 XX XXX XXX <em>(placeholder — update)</em></span></li>
+          <li><strong>Tour Lead</strong><span>+855 XX XXX XXX <em>(placeholder — update)</em></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Lightbox for gallery -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo preview" hidden>
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close preview">&times;</button>
+  <div class="lightbox-body" id="lightboxBody"></div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>Prudential Cambodia &middot; Operations &amp; Technology Away Day 2026</p>
+    <p class="muted">Siem Reap &middot; 7–9 August 2026 &middot; One Team, One Journey, One Future</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
