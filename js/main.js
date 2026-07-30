@@ -163,35 +163,74 @@
     tickerTrack.appendChild(span);
   });
 
-  /* ---------------- Gallery (placeholder tiles, ready for real photos) ---------------- */
+  /* ---------------- Gallery (grouped by day) ---------------- */
   const GALLERY_ITEMS = [
-    { label: 'Day 1 · Welcome Dinner', color: '#E4002B' },
-    { label: 'Day 1 · Sunset Cruise', color: '#C9A227' },
-    { label: 'Day 1 · Museum Visit', color: '#17171A' },
-    { label: 'Day 2 · Preah Khan Temple', color: '#3A3A3E' },
-    { label: 'Day 2 · Photo Hunt', color: '#E4002B' },
-    { label: 'Day 2 · Neak Pean Temple', color: '#C9A227' },
-    { label: 'Day 2 · Gala Dinner', color: '#17171A' },
-    { label: 'Day 3 · Journey Home', color: '#3A3A3E' },
+    { day: 'Day 1', activity: 'Museum Visit', file: 'Museum 1.jpg' },
+    { day: 'Day 1', activity: 'Museum Visit', file: 'Museum 2.jpg' },
+    { day: 'Day 1', activity: 'Museum Visit', file: 'Musieum 3.jpg' },
+    { day: 'Day 1', activity: 'Phnom Krom Sunset', file: 'Phnom Krom 1.jpg' },
+    { day: 'Day 1', activity: 'Lunch at Prohok Chamka', file: 'Prohok Chamka 1.jpg' },
+    { day: 'Day 1', activity: 'Lunch at Prohok Chamka', file: 'Prohok Chamka 2 .jpg' },
+    { day: 'Day 1', activity: 'Lunch at Prohok Chamka', file: 'Prohok Chamka 3.jpg' },
+    { day: 'Day 1', activity: 'Lunch at Prohok Chamka', file: 'Prohok Chamka 4.jpg' },
+    { day: 'Day 1', activity: 'Dinner at Tavern', file: 'Tavern Siem Reap 1.jpg' },
+    { day: 'Day 1', activity: 'Dinner at Tavern', file: 'Tavern Siem Reap 2.jpg' },
+    { day: 'Day 1', activity: 'Dinner at Tavern', file: 'Tavern Siem Reap 3.jpg' },
+    { day: 'Day 2', activity: 'Preah Khan Temple', file: 'Preah Khan Temple 1.jpg' },
+    { day: 'Day 2', activity: 'Preah Khan Temple', file: 'Preah Khan Temple 2.jpg' },
+    { day: 'Day 2', activity: 'Preah Khan Temple', file: 'Preah Khan Temple 3.jpg' },
+    { day: 'Day 2', activity: 'Preah Khan Temple', file: 'Preah Khan Temple 4.jpg' },
+    { day: 'Day 2', activity: 'Neak Pean Temple', file: 'Neak Pean Temple 1.jpg' },
+    { day: 'Day 2', activity: 'Neak Pean Temple', file: 'Neak Pean Temple 2.jpg' },
+    { day: 'Day 2', activity: 'Neak Pean Temple', file: 'Neak Pean Temple 3.jpg' },
+    { day: 'Day 2', activity: 'Neak Pean Temple', file: 'Neak Pean Temple 4.jpg' },
+    { day: 'Day 2', activity: 'Lunch at Pteah Bay Mae Ly', file: 'Pteah Bay Mae Ly 1.jpg' },
+    { day: 'Day 2', activity: 'Lunch at Pteah Bay Mae Ly', file: 'Pteah Bay Mae Ly 2.jpg' },
+    { day: 'Day 2', activity: 'Lunch at Pteah Bay Mae Ly', file: 'Pteah Bay Mae Ly 3.jpg' },
+    { day: 'Day 3', activity: 'Lunch at Somros Prey Pros', file: 'Somros Prey Pros 1.jpg' },
+    { day: 'Day 3', activity: 'Lunch at Somros Prey Pros', file: 'Somros Prey Pros 2.jpg' },
+    { day: 'Day 3', activity: 'Lunch at Somros Prey Pros', file: 'Somros Prey Pros 3.jpg' },
+    { day: 'Day 3', activity: 'Lunch at Somros Prey Pros', file: 'Somros Prey Pros 4.jpg' },
+    { day: 'Hotel', activity: 'Grand Yard La Residence', file: 'Grand Yard La Residence 1.jpg' },
+    { day: 'Hotel', activity: 'Grand Yard La Residence', file: 'Grand Yard La Residence 2.jpg' },
+    { day: 'Hotel', activity: 'Grand Yard La Residence', file: 'Grand Yard La Residence 3.jpg' },
+    { day: 'Hotel', activity: 'Grand Yard La Residence', file: 'Grand Yard La Residence 4.jpg' },
   ];
   const galleryGrid = document.getElementById('galleryGrid');
   const lightbox = document.getElementById('lightbox');
   const lightboxBody = document.getElementById('lightboxBody');
   const lightboxClose = document.getElementById('lightboxClose');
 
+  const galleryDays = [];
   GALLERY_ITEMS.forEach((item) => {
-    const btn = document.createElement('button');
-    btn.className = 'gallery-item';
-    btn.style.background = item.color;
-    btn.innerHTML = `<span>${item.label}</span>`;
-    btn.setAttribute('aria-label', `View ${item.label}`);
-    btn.addEventListener('click', () => {
-      lightboxBody.style.background = item.color;
-      lightboxBody.textContent = item.label;
-      lightbox.hidden = false;
-      lightboxClose.focus();
+    if (!galleryDays.includes(item.day)) galleryDays.push(item.day);
+  });
+
+  galleryDays.forEach((day) => {
+    const group = document.createElement('div');
+    group.className = 'gallery-group';
+    group.innerHTML = `<h3 class="mini-title">${day}</h3>`;
+    const grid = document.createElement('div');
+    grid.className = 'gallery-grid';
+
+    GALLERY_ITEMS.filter(item => item.day === day).forEach((item) => {
+      const src = `assets/${encodeURIComponent(item.file)}`;
+      const label = `${item.day} · ${item.activity}`;
+      const btn = document.createElement('button');
+      btn.className = 'gallery-item';
+      btn.style.backgroundImage = `url("${src}")`;
+      btn.innerHTML = `<span>${item.activity}</span>`;
+      btn.setAttribute('aria-label', `View photo: ${label}`);
+      btn.addEventListener('click', () => {
+        lightboxBody.innerHTML = `<img src="${src}" alt="${label}">`;
+        lightbox.hidden = false;
+        lightboxClose.focus();
+      });
+      grid.appendChild(btn);
     });
-    galleryGrid.appendChild(btn);
+
+    group.appendChild(grid);
+    galleryGrid.appendChild(group);
   });
 
   function closeLightbox() { lightbox.hidden = true; }

@@ -544,10 +544,22 @@ a { color: inherit; }
 
 .contact-list { list-style: none; padding: 0; margin: 0 0 var(--space-3); font-size: 14px; }
 
-.meal-map { border-radius: var(--radius-sm); overflow: hidden; margin-top: var(--space-2); height: 130px; max-width: 320px; }
-.meal-map iframe { width: 100%; height: 100%; border: 0; }
-.meal-link { display: inline-block; margin-top: 6px; font-size: 13px; font-weight: 600; color: var(--color-primary); text-decoration: none; }
-.meal-link:hover { text-decoration: underline; }
+.timeline-photo-link { display: block; width: 100%; max-width: 320px; margin-top: var(--space-2); position: relative; }
+.timeline-photo-link::after {
+  content: "View on Google Maps ↗";
+  position: absolute; left: 8px; bottom: 8px;
+  background: rgba(23,23,26,0.75);
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 999px;
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+}
+.timeline-photo-link:hover::after, .timeline-photo-link:focus-visible::after { opacity: 1; }
+.timeline-photo { display: block; width: 100%; max-width: 320px; height: 150px; object-fit: cover; border-radius: var(--radius-sm); }
+.choice-photo { display: block; width: 100%; height: 140px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: var(--space-3); }
 
 /* ---------- Bus & Room assignments ---------- */
 .assignment-search { margin-top: var(--space-5); }
@@ -570,12 +582,15 @@ a { color: inherit; }
 .data-table th, .data-table td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--color-border); }
 .data-table th { position: sticky; top: 0; background: #fff; font-family: var(--font-display); font-weight: 700; }
 .data-table td:first-child, .data-table th:first-child { width: 40px; color: var(--color-muted); }
+#roomTable th:last-child, #roomTable td.room-cell { text-align: center; }
 .data-table tbody tr.is-match { background: rgba(228,0,43,0.08); }
 .data-table tbody tr.is-hidden { display: none; }
 .data-table tbody tr.room-group-mid td.room-cell { border-bottom: none; }
 .data-table tbody tr.room-shared td.room-cell { box-shadow: inset 3px 0 0 var(--color-gold); }
 
 /* ---------- Gallery ---------- */
+.gallery-group + .gallery-group { margin-top: var(--space-6); }
+.gallery-group .mini-title { margin-bottom: var(--space-3); }
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -595,6 +610,8 @@ a { color: inherit; }
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 13px;
+  background-size: cover;
+  background-position: center;
   transition: transform var(--dur) var(--ease);
 }
 .gallery-item:hover { transform: scale(1.03); }
@@ -609,6 +626,8 @@ a { color: inherit; }
 .contact-list li { display: flex; justify-content: space-between; gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid var(--color-border); font-size: 14.5px; }
 .contact-list strong { font-weight: 700; }
 .contact-list span { color: var(--color-ink-soft); text-align: right; }
+.contact-list span a { color: inherit; text-decoration: none; font-weight: 600; }
+.contact-list span a:hover { text-decoration: underline; color: var(--color-primary); }
 .contact-list em { color: var(--color-muted); font-style: normal; font-size: 12px; }
 
 /* ---------- Lightbox ---------- */
@@ -628,6 +647,7 @@ a { color: inherit; }
   width: 100%;
   aspect-ratio: 4/3;
   border-radius: var(--radius-lg);
+  overflow: hidden;
   color: #fff;
   display: flex;
   align-items: center;
@@ -636,6 +656,7 @@ a { color: inherit; }
   font-weight: 700;
   font-size: 1.4rem;
 }
+.lightbox-body img { width: 100%; height: 100%; object-fit: cover; }
 .lightbox-close {
   position: absolute;
   top: var(--space-4);
