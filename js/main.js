@@ -297,6 +297,7 @@
     ['Sokleap Chhun', ''],
     ['Phalla Srey', 'Delux Double room'],
     ['Sopheak Lao', ''],
+    ['Kimlang So', ''],
     ['Borasy', 'Delux Twin room'],
     ['Lay Sreylux', ''],
     ['Socheata Tann', ''],
@@ -391,40 +392,56 @@
     ['Chhinlong Horn', 'Sopen Vith', 'Moy Visal'],
     ['Lihout Hok', 'Leangheng Phouk', 'Leapheng Prem'],
     ['Smey', 'Dani Satt', ''],
+    ['', 'Kimlang So', ''],
   ];
 
   const roomTableBody = document.querySelector('#roomTable tbody');
   const busTableBody = document.querySelector('#busTable tbody');
 
   // A blank Room cell means that person shares the room with the group above —
-  // fold those rows into one merged cell instead of repeating the room name.
+  // fold those rows into one real merged (rowspan) cell instead of repeating the room name.
   let carriedRoom = '';
   let groupId = -1;
   const roomRows = ROOM_LIST.map(([name, room], i) => {
     const isGroupStart = room !== '';
     if (isGroupStart) { groupId += 1; carriedRoom = room; }
-    const next = ROOM_LIST[i + 1];
-    const isGroupEnd = !next || next[1] !== '';
-    return { name, resolvedRoom: carriedRoom || 'TBC', isGroupStart, isGroupEnd, groupId };
+    return { name, resolvedRoom: carriedRoom || 'TBC', isGroupStart, groupId };
   });
   const groupSizes = {};
   roomRows.forEach(r => { groupSizes[r.groupId] = (groupSizes[r.groupId] || 0) + 1; });
 
+  // Each shared room group is coloured horizontally (the whole row), cycling
+  // through 3 colours so consecutive groups are easy to tell apart.
+  const ROOM_GROUP_COLORS = ['rgba(228,0,43,0.10)', 'rgba(201,162,39,0.10)', 'rgba(31,78,140,0.10)'];
   roomRows.forEach((r, i) => {
     const tr = document.createElement('tr');
     tr.dataset.names = r.name.toLowerCase();
-    tr.dataset.roomResolved = r.resolvedRoom;
-    tr.dataset.roomStart = r.isGroupStart ? '1' : '0';
-    if (!r.isGroupEnd) tr.classList.add('room-group-mid');
-    if (groupSizes[r.groupId] > 1) tr.classList.add('room-shared');
-    tr.innerHTML = `<td>${i + 1}</td><td>${r.name}</td><td class="room-cell">${r.isGroupStart ? r.resolvedRoom : ''}</td>`;
+    tr.dataset.roomGroup = r.groupId;
+    if (groupSizes[r.groupId] > 1) {
+      tr.classList.add('room-shared');
+      tr.dataset.baseColor = ROOM_GROUP_COLORS[r.groupId % 3];
+      tr.style.backgroundColor = tr.dataset.baseColor;
+    }
+    const roomCellHtml = r.isGroupStart
+      ? `<td class="room-cell" rowspan="${groupSizes[r.groupId]}">${r.resolvedRoom}</td>`
+      : '';
+    tr.innerHTML = `<td>${i + 1}</td><td>${r.name}</td>${roomCellHtml}`;
     roomTableBody.appendChild(tr);
   });
 
   BUS_LIST.forEach(([b1, b2, b3], i) => {
     const tr = document.createElement('tr');
     tr.dataset.names = [b1, b2, b3].join(' ').toLowerCase();
-    tr.innerHTML = `<td>${i + 1}</td><td>${b1 || ''}</td><td>${b2 || ''}</td><td>${b3 || ''}</td>`;
+    const noTd = document.createElement('td');
+    noTd.textContent = i + 1;
+    tr.appendChild(noTd);
+    [b1, b2, b3].forEach(name => {
+      const td = document.createElement('td');
+      td.textContent = name || '';
+      td.dataset.name = (name || '').toLowerCase();
+      td.dataset.display = name || '';
+      tr.appendChild(td);
+    });
     busTableBody.appendChild(tr);
   });
 
@@ -432,14 +449,28 @@
   assignmentSearch.addEventListener('input', () => {
     const q = assignmentSearch.value.trim().toLowerCase();
     const searching = q.length > 0;
-    document.querySelectorAll('#busTable tbody tr, #roomTable tbody tr').forEach(tr => {
-      const matches = searching && tr.dataset.names.includes(q);
-      tr.classList.toggle('is-match', matches);
-      tr.classList.toggle('is-hidden', searching && !matches);
+
+    // While searching, a bus row only reveals the bus number plus the
+    // matched name — other passengers in that row stay hidden.
+    document.querySelectorAll('#busTable tbody tr').forEach(tr => {
+      const rowMatches = searching && tr.dataset.names.includes(q);
+      tr.classList.toggle('is-hidden', searching && !rowMatches);
+      tr.querySelectorAll('td[data-name]').forEach(td => {
+        const isNameMatch = searching && td.dataset.name.includes(q);
+        td.textContent = searching ? (isNameMatch ? td.dataset.display : '') : td.dataset.display;
+      });
     });
-    document.querySelectorAll('#roomTable tbody tr').forEach(tr => {
-      const cell = tr.querySelector('.room-cell');
-      cell.textContent = searching || tr.dataset.roomStart === '1' ? tr.dataset.roomResolved : '';
+
+    // For the room list, a search hit should reveal everyone in that
+    // person's room group too, so you can see who you're staying with.
+    const roomRows = document.querySelectorAll('#roomTable tbody tr');
+    const matchedGroups = new Set();
+    roomRows.forEach(tr => {
+      if (searching && tr.dataset.names.includes(q)) matchedGroups.add(tr.dataset.roomGroup);
+    });
+    roomRows.forEach(tr => {
+      const inMatchedGroup = searching && matchedGroups.has(tr.dataset.roomGroup);
+      tr.classList.toggle('is-hidden', searching && !inMatchedGroup);
     });
   });
 

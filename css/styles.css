@@ -583,9 +583,16 @@ a { color: inherit; }
 .data-table th { position: sticky; top: 0; background: #fff; font-family: var(--font-display); font-weight: 700; }
 .data-table td:first-child, .data-table th:first-child { width: 40px; color: var(--color-muted); }
 #roomTable th:last-child, #roomTable td.room-cell { text-align: center; }
-.data-table tbody tr.is-match { background: rgba(228,0,43,0.08); }
+#roomTable td.room-cell { vertical-align: middle; }
+
+/* Always-on colour coding, independent of search */
+/* Bus 1 / Bus 2 / Bus 3 are colour-coded vertically by column, not by row */
+#busTable td:nth-child(2) { background: rgba(228,0,43,0.10); }
+#busTable td:nth-child(3) { background: rgba(201,162,39,0.10); }
+#busTable td:nth-child(4) { background: rgba(31,78,140,0.10); }
+/* Room list: each shared-room group is coloured horizontally (whole row), set inline in JS */
+
 .data-table tbody tr.is-hidden { display: none; }
-.data-table tbody tr.room-group-mid td.room-cell { border-bottom: none; }
 .data-table tbody tr.room-shared td.room-cell { box-shadow: inset 3px 0 0 var(--color-gold); }
 
 /* ---------- Gallery ---------- */
