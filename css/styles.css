@@ -582,7 +582,7 @@ a { color: inherit; }
 .data-table th, .data-table td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--color-border); }
 .data-table th { position: sticky; top: 0; background: #fff; font-family: var(--font-display); font-weight: 700; }
 .data-table td:first-child, .data-table th:first-child { width: 40px; color: var(--color-muted); }
-#roomTable th:last-child, #roomTable td.room-cell { text-align: center; }
+#roomTable th:last-child, #roomTable td.room-cell { text-align: center; width: 100px; }
 #roomTable td.room-cell { vertical-align: middle; }
 
 /* Always-on colour coding, independent of search */
