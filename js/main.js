@@ -200,11 +200,31 @@
   const lightbox = document.getElementById('lightbox');
   const lightboxBody = document.getElementById('lightboxBody');
   const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+  const lightboxCounter = document.getElementById('lightboxCounter');
 
   const galleryDays = [];
   GALLERY_ITEMS.forEach((item) => {
     if (!galleryDays.includes(item.day)) galleryDays.push(item.day);
   });
+
+  let currentIndex = 0;
+
+  function showImage(index) {
+    currentIndex = (index + GALLERY_ITEMS.length) % GALLERY_ITEMS.length;
+    const item = GALLERY_ITEMS[currentIndex];
+    const src = `assets/${encodeURIComponent(item.file)}`;
+    const label = `${item.day} · ${item.activity}`;
+    lightboxBody.innerHTML = `<img src="${src}" alt="${label}">`;
+    lightboxCounter.textContent = `${currentIndex + 1} / ${GALLERY_ITEMS.length}`;
+  }
+
+  function openLightbox(index) {
+    showImage(index);
+    lightbox.hidden = false;
+    lightboxClose.focus();
+  }
 
   galleryDays.forEach((day) => {
     const group = document.createElement('div');
@@ -214,6 +234,7 @@
     grid.className = 'gallery-grid';
 
     GALLERY_ITEMS.filter(item => item.day === day).forEach((item) => {
+      const index = GALLERY_ITEMS.indexOf(item);
       const src = `assets/${encodeURIComponent(item.file)}`;
       const label = `${item.day} · ${item.activity}`;
       const btn = document.createElement('button');
@@ -221,11 +242,7 @@
       btn.style.backgroundImage = `url("${src}")`;
       btn.innerHTML = `<span>${item.activity}</span>`;
       btn.setAttribute('aria-label', `View photo: ${label}`);
-      btn.addEventListener('click', () => {
-        lightboxBody.innerHTML = `<img src="${src}" alt="${label}">`;
-        lightbox.hidden = false;
-        lightboxClose.focus();
-      });
+      btn.addEventListener('click', () => openLightbox(index));
       grid.appendChild(btn);
     });
 
@@ -235,8 +252,23 @@
 
   function closeLightbox() { lightbox.hidden = true; }
   lightboxClose.addEventListener('click', closeLightbox);
+  lightboxPrev.addEventListener('click', () => showImage(currentIndex - 1));
+  lightboxNext.addEventListener('click', () => showImage(currentIndex + 1));
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lightbox.hidden) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.hidden) return;
+    if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+    else if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+  });
+
+  // Swipe support for touch devices
+  let touchStartX = 0;
+  lightboxBody.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].clientX; });
+  lightboxBody.addEventListener('touchend', (e) => {
+    const deltaX = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(deltaX) > 40) showImage(currentIndex + (deltaX < 0 ? 1 : -1));
+  });
 
   /* ---------------- Room list ---------------- */
   const ROOM_LIST = [
